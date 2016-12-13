@@ -40,7 +40,7 @@
                         rs = stmt.executeQuery();
                     } catch (SQLException e) {
                         e.printStackTrace();
-                    }
+                    } 
                     return rs;
                 }
             }
@@ -87,7 +87,8 @@
                 </tbody>
             </table>            
         </form>
- 
 
+        <%
+        %>
     </body>
 </html>

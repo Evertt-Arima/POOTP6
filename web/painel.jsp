@@ -92,9 +92,11 @@
             while (respostas.next()) {%>
 
 
-        <h1 align="center"><%= 'r' + i%> / <%= respostas.getString("RESP")%></h1>
+            <h3 align="center"><%= request.getParameter("respo"+i)%> / <%= respostas.getString("RESP")%></h3>
 
-        <%i++;
+            <% if (request.getParameter("respo"+i).equals(respostas.getString("RESP"))) {
+            acertos++;}
+            i++;
             }
         %>
         <h1 align="center">Você acertou <%= acertos%> / 10</h1>
