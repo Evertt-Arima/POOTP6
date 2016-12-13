@@ -23,8 +23,8 @@
                         <td><input type="password" name="senha" value="" size="50" /></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" value="Logar" name="logar" /></td>
-                        <td><input type="submit" value="Registrar" name="Registrar" /></td>
+                        <td><input type="submit" value="Logar" name="registrar" /></td>
+                        <td><input type="submit" value="Registrar" name="registrar" /></td>
                     </tr>
                 </tbody>
             </table>
