@@ -14,7 +14,7 @@
         <title>Verificando DB</title>
     </head>
     <body>
-        <h1>Verficando DB</h1>
+        <h1 align="center">Verficando DB</h1>
         <%!
             public class Usuarios {
 
@@ -29,7 +29,7 @@
                 public Usuarios() {
                     try {
                         con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                        stmt = con.prepareStatement("SELECT EMAIL, SENHA FROM APP.USUARIO");
+                        stmt = con.prepareStatement("SELECT * FROM APP.USUARIO");
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -49,7 +49,45 @@
         <%
             Usuarios user = new Usuarios();
             ResultSet users = user.getUsuario();
+
+            int count = 0;
+            while (users.next()) {
+
+                if (users.getString("EMAIL").equals(request.getParameter("email")) && users.getString("SENHA").equals(request.getParameter("senha"))) {
         %>
+        <h1 align="center">Bem Vindo, <%= users.getString("NOME")%></h1>
+        <form name="verificacaoform" action="painel.jsp" method="POST">
+            <table border="0" align="center">                
+                <tbody>
+                    <tr>
+                        <td><input type="submit" value="Continuar" name="continuar" align="center"/></td>
+                    </tr>
+                </tbody>
+            </table> 
+        </form>
+        <% count++;
+                }
+            }
+            if (count == 0) {%>
+        <h1 align="center" >Email ou Senha Inválida!</h1>
+        <h3 align="center">Volte e tente novamente.</h3>
+
+        <%
+            }
+        %>
+        <form name="verificacaoform2" action="index.jsp" method="POST">
+            <input type="submit" value="Voltar" name="voltar" align="center" />
+        </form>
+        <form name="verificacaoform2" action="cadastro.jsp" method="POST">
+            <table border="0" align="center">                
+                <tbody>
+                    <tr>
+                        <td><input type="submit" value="Registrar" name="registrar2" /></td>
+                    </tr>
+                </tbody>
+            </table>            
+        </form>
+ 
 
     </body>
 </html>
