@@ -1,9 +1,6 @@
-
-
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.*" %>
+<%@page import="java.util.*" %>
+<% Class.forName("org.apache.derby.jdbc.ClientDriver"); %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,20 +9,12 @@
         <title>Home</title>
     </head>
     <body>
-        <h1>Home</h1>
+        <h1>Verificando dados</h1>
 
         <%
-            String email = request.getParameter("email");
-            String senha = request.getParameter("senha");
-            String cmd1 = request.getParameter("registrar");
-            int cmd = 0;
-
-            if (cmd1.equals("Logar")) {
-                cmd = 2;
-            } else if (cmd1.equals("Registrar")) {
-                cmd = 1;
-            }
-            if (cmd == 1) {
+            String cmd = request.getParameter("registrar");
+        
+            if (cmd.equals("Logar")) {
         %> 
 
         <HR />
@@ -36,7 +25,7 @@
                 <tbody>
                     <tr>
                         <td>Nome:</td>
-                        <td><input type="text" name="nome1" value="" size="100" /></td>
+                        <td><input type="text" name="name1" value="" size="100" /></td>
                     </tr>
                     <tr>
                         <td>E-mail:</td>
@@ -55,8 +44,11 @@
         </form>
 
         <%
-
-        } else if (cmd == 2) {
+            
+            
+        } else if (cmd.equals("Registrar")) {
+            String email = request.getParameter("email");
+            String senha = request.getParameter("senha");
 
         %>
 

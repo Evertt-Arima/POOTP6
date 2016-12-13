@@ -1,6 +1,4 @@
 
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,9 +7,9 @@
     </head>
     <body>
         <h1>Bem Vindo!!!</h1>
-        <h2>FaÃ§a o Login para entrar ou Registre-se!</h2>
+        <h2>Faça o Login para entrar ou Registre-se!</h2>
 
-        <form name="login" action="home.jsp" method="POST">
+        <form name="login" action="home1.jsp" method="POST">
             <table border="0">
                 <tbody>
                     <tr>
@@ -25,6 +23,7 @@
                     <tr>
                         <td><input type="submit" value="Logar" name="registrar" /></td>
                         <td><input type="submit" value="Registrar" name="registrar" /></td>
+                        
                     </tr>
                 </tbody>
             </table>
