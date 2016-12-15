@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Jogo do Real</title>
+        <link rel="stylesheet" href="css/estilo.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <script type="text/javascript" src="js/jquery.js"></script>
+    </head>
+    <body>
+        <div class="all">
+            <header>
+                <a href="index.jsp"><h1>Jogo <em>do</em> Real</h1></a>
+                <h2>Você está preparado para este desafio?</h2>
+            </header>
+
+            <main>

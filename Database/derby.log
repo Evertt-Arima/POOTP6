@@ -1,14 +1,14 @@
-Tue Dec 13 01:57:52 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Wed Dec 14 22:09:48 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
 ----------------------------------------------------------------
-Tue Dec 13 01:57:52 BRST 2016:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-f654-5647-00001d4b9acd
-no diretório de banco de dados C:\Users\Desenvolvedor\Documents\GitHub\POOTP6\Database\DB 
+Wed Dec 14 22:09:49 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-ffd0-42cb-00006f54a545
+no diretório de banco de dados C:\Users\Jéssica\Documents\GitHub\POOTP6\Database\DB 
 
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_73-b02
-user.dir=C:\Program Files\glassfish-4.1.1\javadb
+java.runtime.version=1.8.0_101-b13
+user.dir=C:\Users\Jéssica\glassfish4\javadb
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
-derby.system.home=C:\Users\Desenvolvedor\Documents\GitHub\POOTP6\Database
+derby.system.home=C:\Users\Jéssica\Documents\GitHub\POOTP6\Database
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''

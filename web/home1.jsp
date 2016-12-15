@@ -8,12 +8,7 @@
 <% Class.forName("org.apache.derby.jdbc.ClientDriver");%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Verificando DB</title>
-    </head>
-    <body>
+<%@include file="WEB-INF/jspf/header.jspf" %>
         <h1 align="center">Verficando DB</h1>
         <%!
             public class Usuarios {
@@ -56,11 +51,11 @@
                 if (users.getString("EMAIL").equals(request.getParameter("email")) && users.getString("SENHA").equals(request.getParameter("senha"))) {
         %>
         <h1 align="center">Bem Vindo, <%= users.getString("NOME")%></h1>
-        <form name="verificacaoform" action="painel.jsp" method="POST">
+        <form class="form" name="verificacaoform" action="painel.jsp" method="POST">
             <table border="0" align="center">                
                 <tbody>
                     <tr>
-                        <td><input type="submit" value="Continuar" name="continuar" align="center"/></td>
+                        <td><input class="btn btn-success" type="submit" value="Continuar" name="continuar" align="center"/></td>
                     </tr>
                 </tbody>
             </table> 
@@ -76,13 +71,13 @@
             }
         %>
         <form name="verificacaoform2" action="index.jsp" method="POST">
-            <input type="submit" value="Voltar" name="voltar" align="center" />
+            <input class="btn btn-info" type="submit" value="Voltar" name="voltar" align="center" />
         </form>
         <form name="verificacaoform2" action="cadastro.jsp" method="POST">
             <table border="0" align="center">                
                 <tbody>
                     <tr>
-                        <td><input type="submit" value="Registrar" name="registrar2" /></td>
+                        <td><input class="btn btn-info" type="submit" value="Registrar" name="registrar2" /></td>
                     </tr>
                 </tbody>
             </table>            
@@ -90,5 +85,4 @@
 
         <%
         %>
-    </body>
-</html>
+<%@include file="WEB-INF/jspf/footer.jspf" %>

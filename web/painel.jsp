@@ -2,14 +2,7 @@
 <%@page import="java.sql.*"%>
 <% Class.forName("org.apache.derby.jdbc.ClientDriver");%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Quiz</title>
-    </head>
-    <body>
-        <h1 ALIGN="CENTER">Quiz Final</h1>
+<%@include file="WEB-INF/jspf/header.jspf" %>
         <%!
             public class Quiz {
 
@@ -47,34 +40,36 @@
             ResultSet respostas = resposta.getPergunta();
             int questao = 1;
             if (request.getParameter("responder") == null) {
-
-                while (respostas.next()) {%>
-        <form name="quiz" action="painel.jsp" method="GET">
-            <table border="0" ALIGN="CENTER">
-                <tbody>
-                    <tr>
-                        <td><strong><%= questao%>. <%= respostas.getString("PERG")%></strong></td>
-                    </tr>
-                    <tr ALIGN="CENTER">
-                        <td>
-                            <input type="radio" name="respo<%= questao%>" value="<%= respostas.getString("ALT1")%>" /><%= respostas.getString("ALT1")%>
-                            <input type="radio" name="respo<%= questao%>" value="<%= respostas.getString("ALT2")%>" /><%= respostas.getString("ALT2")%>
-                            <input type="radio" name="respo<%= questao%>" value="<%= respostas.getString("ALT3")%>" /><%= respostas.getString("ALT3")%>
-                            <input type="radio" name="respo<%= questao%>" value="<%= respostas.getString("ALT4")%>" /><%= respostas.getString("ALT4")%>
-                            <input type="radio" name="respo<%= questao%>" value="<%= respostas.getString("ALT5")%>" /><%= respostas.getString("ALT5")%>
-                        </td>
-                    </tr>
-
+                %>
+        <form class="form" name="quiz" action="painel.jsp" method="GET">
+            <% while (respostas.next()) { %>
+            <div class="col-xs-12 questao" id="<%=questao%>">
+                        <h2><%= questao%>. <%= respostas.getString("PERG")%></h2>
+                            <input type="radio" name="respo<%= questao%>" value="<%= respostas.getString("ALT1")%>" /><%= respostas.getString("ALT1")%><br/>
+                            <input type="radio" name="respo<%= questao%>" value="<%= respostas.getString("ALT2")%>" /><%= respostas.getString("ALT2")%><br/>
+                            <input type="radio" name="respo<%= questao%>" value="<%= respostas.getString("ALT3")%>" /><%= respostas.getString("ALT3")%><br/>
+                            <input type="radio" name="respo<%= questao%>" value="<%= respostas.getString("ALT4")%>" /><%= respostas.getString("ALT4")%><br/>
+                            <input type="radio" name="respo<%= questao%>" value="<%= respostas.getString("ALT5")%>" /><%= respostas.getString("ALT5")%><br/>
+                            <% if (questao < 10) { %>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <button class="btn btn-info proximo">Próxima pergunta</button>
+                                    </div>
+                                </div>
+                            <% } else { %>
+                            <div class="row">
+                                    <div class="col-xs-12">
+                                        <input class="btn btn-success" type="submit" value="Enviar Respostas" name="responder" />
+                                </div>
+                            </div>
+                            <% } %>
+            </div>
                     <%
                             questao++;
                         }
                     %>
 
-                    <tr align="center">
-                        <td><input type="submit" value="Enviar Respostas" name="responder" /></td>
-                    </tr>
-                </tbody>
-            </table> 
+                        
         </form>
         <% } else {
             String r1 = request.getParameter("respo1");
@@ -90,18 +85,37 @@
 
             int i = 1;
             while (respostas.next()) {%>
-
-
-            <h3 align="center"><%= request.getParameter("respo"+i)%> / <%= respostas.getString("RESP")%></h3>
-
             <% if (request.getParameter("respo"+i).equals(respostas.getString("RESP"))) {
             acertos++;}
             i++;
             }
         %>
         <h1 align="center">Você acertou <%= acertos%> / 10</h1>
+        <a href="home1.jsp" class="btn btn-success">Voltar</a>
         <%
             }
-        %>
-    </body>
-</html>
+%>
+<script>
+    $(document).ready(function () {
+        for (i = 2; i <= 10; i++) {
+            $('#' + i).addClass('hidden');
+        }
+
+        $('.proximo').click(function () {
+            id = $(this).closest('div.questao').attr('id');
+            proximoid = parseInt(id) + 1;
+            inputname = parseInt(id) - 1;
+            if ($('[name="respo' + id + '"]').is(':checked')) {
+                if (id < 10) {
+                    $('#' + id).addClass('hidden');
+                    $('#' + proximoid).removeClass('hidden');
+                }
+            } else {
+                $(this).addClass('animated');
+                $(this).addClass('shake');
+            }
+            return false;
+        });
+    });
+</script>
+<%@include file="WEB-INF/jspf/footer.jspf" %>
